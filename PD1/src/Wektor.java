@@ -7,8 +7,18 @@ public class Wektor implements IStatystyka
 	public double[] getWspolrzedne() {
 		return wspolrzedne;
 	}
+	//Zad 2.4 - obs³uga wyj¹tku
 	public void setWspolrzedne(double[] wspolrzedne) {
-		this.wspolrzedne = wspolrzedne;
+		try
+		{
+			if(wspolrzedne.length != this.getWspolrzedne().length) throw new Exception("Rozmiar podanej tablicy nie zgadza siê.");
+			this.wspolrzedne = wspolrzedne;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Wyst¹pi³ b³¹d! Wspó³rzêdne nie zosta³y ustawione");
+			e.printStackTrace();
+		}
 	}
 	public int getRozmiar() {
 		return rozmiar;
@@ -31,7 +41,6 @@ public class Wektor implements IStatystyka
 			System.out.print(getWspolrzedne()[i] + (i != getWspolrzedne().length-1 ? "; " : ""));
 		}
 		System.out.println("]");
-		//System.out.println("");
 	}
 	
 	@Override
@@ -43,12 +52,22 @@ public class Wektor implements IStatystyka
 		return suma;
 	}
 	
-	//Dodawanie wektorów - za³o¿enie, ¿e obydwa wektory s¹ tej samej d³ugoœci
+	//Dodawanie wektorów - za³o¿enie, ¿e obydwa wektory s¹ tej samej d³ugoœci~
+	//Zad 2.4 Obs³uga wyj¹tku przy dodawaniu pustego obiektu
 	public Wektor add(Wektor w)
 	{
-		for(int i=0; i<this.rozmiar; i++)
+		try 
 		{
-			this.wspolrzedne[i] += w.getWspolrzedne()[i];
+			if(w == null) throw new Exception("Dodawany wektor jest pusty (null)!");
+			if(getWspolrzedne().length != w.getWspolrzedne().length) throw new ZlaDlugoscException();
+			for(int i=0; i<this.rozmiar; i++)
+			{
+				this.wspolrzedne[i] += w.getWspolrzedne()[i];
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 		return this;
 	}
