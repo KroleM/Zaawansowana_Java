@@ -1,5 +1,5 @@
 //Zadanie 2.1
-public class Wektor 
+public class Wektor implements IStatystyka
 {
 	private int rozmiar;
 	private double[] wspolrzedne;
@@ -34,6 +34,7 @@ public class Wektor
 		//System.out.println("");
 	}
 	
+	@Override
 	public double suma()
 	{
 		double suma = 0;
@@ -51,6 +52,17 @@ public class Wektor
 		}
 		return this;
 	}
-	
-	
+	@Override
+	public double srednia() {
+		return this.suma() / this.rozmiar;
+	}
+	@Override
+	public double max() {
+		double max = getWspolrzedne()[0];
+		for(var elem : getWspolrzedne())
+		{
+			if(elem > max) max = elem;
+		}
+		return max;
+	}
 }
