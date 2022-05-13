@@ -4,12 +4,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 public class Kalkulator 
 {
 	private JFrame frame;
 	private JPanel panel;
 	private JPanel panelSrodek;
+	private JPanel panelDol;
 	private JLabel wynik;
 	private JButton przycisk0;
 	private JButton przycisk1;
@@ -162,19 +164,25 @@ public class Kalkulator
 	public void setPanelSrodek(JPanel panelSrodek) {
 		this.panelSrodek = panelSrodek;
 	}
+	public JPanel getPanelDol() {
+		return panelDol;
+	}
+	public void setPanelDol(JPanel panelDol) {
+		this.panelDol = panelDol;
+	}
 
 	public Kalkulator()
 	{
 		frame = new JFrame("Kalkulator");
 		panel = new JPanel();
+		panelSrodek = new JPanel();
+		panelDol = new JPanel();
 		frame.setSize(300, 400);
 		frame.setContentPane(panel);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);	
 		ustawLayout();
-		//panel.setBackground(null);
+		panel.setBackground(null);
 		
-		wynik = new JLabel("");
+		wynik = new JLabel("???");
 		przycisk0 = new JButton("0");
 		przycisk1 = new JButton("1");
 		przycisk2 = new JButton("2");
@@ -194,8 +202,24 @@ public class Kalkulator
 		przyciskZnak= new JButton("+/-");
 		przyciskRowne= new JButton("=");
 		
+		KalkulatorActionListener listener = new KalkulatorActionListener(wynik);
+		przycisk1.addActionListener(listener);
+		przycisk2.addActionListener(listener);
+		przycisk3.addActionListener(listener);
+		przycisk4.addActionListener(listener);
+		przycisk5.addActionListener(listener);
+		przycisk6.addActionListener(listener);
+		przycisk7.addActionListener(listener);
+		przycisk8.addActionListener(listener);
+		przycisk9.addActionListener(listener);
+		przycisk0.addActionListener(listener);
+		przyciskPlus.addActionListener(listener);
+		przyciskMinus.addActionListener(listener);
+		
 		dodajElementy();
 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);	
 	}
 	
 	private void ustawLayout()
@@ -203,18 +227,33 @@ public class Kalkulator
 		getPanel().setLayout(new BorderLayout());
 		getPanelSrodek().setLayout(new GridLayout(4,4));
 		getPanel().add(getPanelSrodek(), BorderLayout.CENTER);
+		getPanelDol().setLayout(new FlowLayout());
+		getPanel().add(getPanelDol(), BorderLayout.SOUTH);
 	}
 	
 	private void dodajElementy()
 	{
 		getPanel().add(getWynik(), BorderLayout.NORTH);
-		
-		getPanel().add(getPrzyciskZnak(), BorderLayout.SOUTH);
-		getPanel().add(getPrzyciskRowne(), BorderLayout.SOUTH);
+		getPanelSrodek().add(getPrzycisk1());
+		getPanelSrodek().add(getPrzycisk2());
+		getPanelSrodek().add(getPrzycisk3());
+		getPanelSrodek().add(getPrzyciskPlus());
+		getPanelSrodek().add(getPrzycisk4());
+		getPanelSrodek().add(getPrzycisk5());
+		getPanelSrodek().add(getPrzycisk6());
+		getPanelSrodek().add(getPrzyciskMinus());
+		getPanelSrodek().add(getPrzycisk7());
+		getPanelSrodek().add(getPrzycisk8());
+		getPanelSrodek().add(getPrzycisk9());
+		getPanelSrodek().add(getPrzyciskMnozenie());
+		getPanelSrodek().add(getPrzycisk0());
+		getPanelSrodek().add(getPrzyciskC());
+		getPanelSrodek().add(getPrzyciskKropka());
+		getPanelSrodek().add(getPrzyciskDzielenie());
+		getPanelDol().add(getPrzyciskZnak());
+		getPanelDol().add(getPrzyciskRowne());
 		
 	}
-
-
 
 
 
