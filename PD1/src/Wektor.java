@@ -142,7 +142,6 @@ public class Wektor implements IStatystyka
 			while(skaner.hasNextDouble())
 			{
 				wczytywane.add(skaner.nextDouble());
-				//System.out.print(wczytywane.get(j) + " ");
 				j++;
 			}
 

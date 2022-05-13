@@ -1,3 +1,5 @@
+//Autor: Karol Marciniak
+//Programowanie zaawansowanych aplikacji w JAVA: Praca domowa nr 1
 import java.util.Scanner;
 
 public class PZAwJ_PD1 {
