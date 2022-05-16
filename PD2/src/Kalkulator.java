@@ -2,6 +2,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
@@ -182,7 +184,8 @@ public class Kalkulator
 		ustawLayout();
 		panel.setBackground(null);
 		
-		wynik = new JLabel("???");
+		wynik = new JLabel("???", SwingConstants.RIGHT);
+		//wynik.setHorizontalAlignment(RIGHT);
 		przycisk0 = new JButton("0");
 		przycisk1 = new JButton("1");
 		przycisk2 = new JButton("2");
@@ -213,8 +216,14 @@ public class Kalkulator
 		przycisk8.addActionListener(listener);
 		przycisk9.addActionListener(listener);
 		przycisk0.addActionListener(listener);
+		przyciskKropka.addActionListener(listener);
 		przyciskPlus.addActionListener(listener);
 		przyciskMinus.addActionListener(listener);
+		przyciskMnozenie.addActionListener(listener);
+		przyciskDzielenie.addActionListener(listener);
+		przyciskC.addActionListener(listener);
+		przyciskZnak.addActionListener(listener);
+		przyciskRowne.addActionListener(listener);
 		
 		dodajElementy();
 
