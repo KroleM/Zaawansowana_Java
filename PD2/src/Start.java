@@ -5,5 +5,6 @@ public class Start {
 	{
 		//new Kalkulator();
 		new Tlumacz();
+		//new T³umacz2();
 	}
 }

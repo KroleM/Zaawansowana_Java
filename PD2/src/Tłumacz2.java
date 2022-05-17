@@ -5,15 +5,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class Tlumacz extends JFrame implements ActionListener
+public class T³umacz2 extends JFrame implements ActionListener
 {
 	//zadanie 2.2
 	private JTextField pole1, pole2;
 	private JButton przycisk;
-	public static String[] angielskie = {"bread", "leg", "field", "printer", "rectangle"};
-	public static String[] polskie = {"chleb", "noga", "pole", "drukarka", "prostok¹t"};
+	public static ArrayList<ParaSlow> paraSlow;
+	static {
+		paraSlow = new ArrayList<>(List.of(new ParaSlow("bread", "chleb"), new ParaSlow("armchair", "fotel"), new ParaSlow("couch", "trener")));
+	}
 	
 	public JTextField getPole1() {
 		return pole1;
@@ -35,7 +39,7 @@ public class Tlumacz extends JFrame implements ActionListener
 	}
 
 	
-	public Tlumacz()
+	public T³umacz2()
 	{
 		//zadanie 2.1
 		super("Prezentacja s³ówek angielskich");
@@ -66,23 +70,26 @@ public class Tlumacz extends JFrame implements ActionListener
 		{
 			if(e.getActionCommand().equals("Poka¿ nastêpne s³ówko"))
 			{
-				//System.out.println("tak");
 				if(getPole1().getText().length() > 0)
-					for(int i=0; i<5; i++)
+				{
+					for(ParaSlow ps : paraSlow)
 					{
-						if(getPole1().getText().equals(angielskie[i])) 
+						if(ps.getSlowoAngielskie().equals(getPole1().getText()))
 						{
-							getPole2().setText(polskie[i]);
+							getPole2().setText(ps.getSlowoPolskie());
 							break;
 						}
 					}
+				}
 				else
-				for(int i=0; i<5; i++)
 				{
-					if(getPole2().getText().equals(polskie[i])) 
+					for(ParaSlow ps : paraSlow)
 					{
-						getPole1().setText(angielskie[i]);
-						break;
+						if(ps.getSlowoPolskie().equals(getPole2().getText()))
+						{
+							getPole1().setText(ps.getSlowoAngielskie());
+							break;
+						}
 					}
 				}
 			}
@@ -90,7 +97,6 @@ public class Tlumacz extends JFrame implements ActionListener
 		catch(Exception ex)
 		{
 			System.out.println("Error");
-		}
-		
+		}		
 	}
 }
