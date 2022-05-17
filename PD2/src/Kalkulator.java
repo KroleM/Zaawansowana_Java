@@ -196,14 +196,14 @@ public class Kalkulator
 		przycisk7 = new JButton("7");
 		przycisk8 = new JButton("8");
 		przycisk9 = new JButton("9");
-		przyciskC= new JButton("C");
-		przyciskKropka= new JButton(".");
-		przyciskPlus= new JButton("+");
-		przyciskMinus= new JButton("-");
-		przyciskMnozenie= new JButton("*");
-		przyciskDzielenie= new JButton("/");
-		przyciskZnak= new JButton("+/-");
-		przyciskRowne= new JButton("=");
+		przyciskC = new JButton("C");
+		przyciskKropka = new JButton(".");
+		przyciskPlus = new JButton("+");
+		przyciskMinus = new JButton("-");
+		przyciskMnozenie = new JButton("*");
+		przyciskDzielenie = new JButton("/");
+		przyciskZnak = new JButton("+/-");
+		przyciskRowne = new JButton("=");
 		
 		KalkulatorActionListener listener = new KalkulatorActionListener(wynik);
 		przycisk1.addActionListener(listener);
@@ -263,9 +263,4 @@ public class Kalkulator
 		getPanelDol().add(getPrzyciskRowne());
 		
 	}
-
-
-
-	
-	
 }

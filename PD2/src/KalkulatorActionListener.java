@@ -11,7 +11,7 @@ public class KalkulatorActionListener implements ActionListener
 	private String liczba;
 	private int licznik;
 	private String dzialanie;
-	private boolean zmianaZnaku;	//zmienna sprawdzaj¹ca, czy przed chwil¹ zlecon¹ zmianê znaku
+	private boolean zmianaZnaku;	//zmienna sprawdzaj¹ca, czy przed chwil¹ zlecono zmianê znaku
 	
 	
 	public JLabel getWynik() {
@@ -120,17 +120,14 @@ public class KalkulatorActionListener implements ActionListener
 				wyswietlDzialanie("+");
 				break;
 			case "-":
-				getWynik().setText("-");
 				dodajDzialanie("-");
 				wyswietlDzialanie("-");
 				break;
 			case "*":
-				getWynik().setText("*");
 				dodajDzialanie("*");
 				wyswietlDzialanie("*");
 				break;
 			case "/":
-				getWynik().setText("/");
 				dodajDzialanie("/");
 				wyswietlDzialanie("/");
 				break;
