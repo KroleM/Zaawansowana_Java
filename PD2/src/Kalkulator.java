@@ -1,3 +1,4 @@
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -179,6 +180,7 @@ public class Kalkulator
 		panel = new JPanel();
 		panelSrodek = new JPanel();
 		panelDol = new JPanel();
+		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
 		frame.setSize(300, 400);
 		frame.setContentPane(panel);
 		ustawLayout();
