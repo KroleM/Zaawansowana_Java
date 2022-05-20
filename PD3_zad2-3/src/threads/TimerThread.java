@@ -44,7 +44,7 @@ public class TimerThread extends Thread
 				getPoleTekstowe().setText((double)getCzas()/1000 + "");
 				Thread.sleep(100);
 				setCzas(getCzas() - 100);
-				System.out.println(isCzyOdlicza());
+				if(getCzas() < 0) getPoleTekstowe().setText("0.0");
 			} 
 			catch (InterruptedException e) 
 			{
