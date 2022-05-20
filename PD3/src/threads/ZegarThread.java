@@ -22,6 +22,7 @@ public class ZegarThread extends Thread
 	{
 		while(true)
 		{
+			getZegar().AktualizujDate(); 		//aktualizacja daty
 			getZegar().WypiszDate();
 			try
 			{

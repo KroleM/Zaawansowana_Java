@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import threads.ZegarThread;
+
 public class Kalkulator {
 	private JFrame frame;
 	private JPanel panel;
@@ -124,8 +126,12 @@ public class Kalkulator {
 		przyciskPlus.addActionListener(listener);
 		przyciskMinus.addActionListener(listener);
 		przyciskMnozenie.addActionListener(listener);
+		//dataTekst.addActionListener(listener);
 
 		dodajElementy();
+		
+		ZegarThread zegarThread = new ZegarThread(new Zegar(dataTekst));
+		zegarThread.start();
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
