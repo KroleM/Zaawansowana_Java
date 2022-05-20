@@ -33,7 +33,7 @@ public class Minutnik extends JFrame
 		panelGlowny.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		setContentPane(panelGlowny);
 		
-		poleOdliczania = new JTextField("0.0");
+		poleOdliczania = new JTextField("10.0");
 		poleOdliczania.setEditable(true);
 		poleOdliczania.setFont(new Font("Calibri", Font.BOLD, 26));
 		poleOdliczania.setHorizontalAlignment(JTextField.CENTER);
@@ -59,5 +59,4 @@ public class Minutnik extends JFrame
 		setVisible(true);
 		
 	}	
-	
 }

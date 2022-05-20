@@ -6,7 +6,7 @@ public class TimerThread extends Thread
 {
 	private JTextField poleTekstowe;
 	private int czas;
-	private boolean czyOdlicza;
+	private volatile boolean czyOdlicza;
 
 		public JTextField getPoleTekstowe() {
 		return poleTekstowe;
@@ -39,10 +39,9 @@ public class TimerThread extends Thread
 	{
 		while(getCzas() >= 0 && isCzyOdlicza())
 		{
-			getPoleTekstowe().setText((double)getCzas()/1000 + "");
-
 			try 
 			{
+				getPoleTekstowe().setText((double)getCzas()/1000 + "");
 				Thread.sleep(100);
 				setCzas(getCzas() - 100);
 				System.out.println(isCzyOdlicza());
@@ -54,10 +53,4 @@ public class TimerThread extends Thread
 			}
 		}
 	}
-
-	//public void stop()
-	{
-		
-	}
-	
 }

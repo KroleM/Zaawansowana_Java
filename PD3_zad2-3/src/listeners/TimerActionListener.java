@@ -12,8 +12,7 @@ public class TimerActionListener implements ActionListener
 {
 	private JTextField poleOdliczania;
 	private Minutnik minutnik;
-	//private TimerThread timerThread;
-	private boolean poczatek;
+	private TimerThread timerThread;
 	
 	public Minutnik getMinutnik() {
 		return minutnik;
@@ -27,44 +26,34 @@ public class TimerActionListener implements ActionListener
 	public void setPoleOdliczania(JTextField poleOdliczania) {
 		this.poleOdliczania = poleOdliczania;
 	}
-	public boolean isPoczatek() {
-		return poczatek;
-	}
-	public void setPoczatek(boolean poczatek) {
-		this.poczatek = poczatek;
-	}
 	
 	public TimerActionListener(JTextField poleOdliczania, Minutnik minutnik)
 	{
 		super();
 		this.poleOdliczania = poleOdliczania;
 		this.minutnik = minutnik;
-		//timerThread = new TimerThread(this.poleOdliczania);
-		this.poczatek = true;
+		timerThread = new TimerThread(this.poleOdliczania);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		try {
-			TimerThread timerThread = new TimerThread(getPoleOdliczania());
-			System.out.println("Nowy w¹tek");
-			
+		try {	
 			switch (e.getActionCommand()) {
 			case "Start":
 				System.out.println("Start");
-				//TimerThread timerThread = new TimerThread(getPoleOdliczania());
-				timerThread.setCzyOdlicza(true);
-				System.out.println(timerThread.isCzyOdlicza());
-				timerThread.start();
+				timerThread.setCzyOdlicza(false);					//dezaktywacja bie¿¹cego (starego) w¹tku
+				timerThread = new TimerThread(getPoleOdliczania());	//stworzenie nowego w¹tku
+				timerThread.setCzyOdlicza(true);					//aktywacja nowego w¹tku
+				timerThread.start();								//rozpoczêcie nowego w¹tku
 				break;
 			case "Stop":
 				System.out.println("Stop");
 				timerThread.setCzyOdlicza(false);
-				System.out.println(timerThread.isCzyOdlicza());
 				break;
 			case "Zamknij":
 				System.out.println("Zamknij");
+				timerThread.setCzyOdlicza(false);
 				getMinutnik().dispose();
 				break;
 			}
