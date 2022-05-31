@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
@@ -189,6 +190,7 @@ public class Kalkulator
 		wynik = new JLabel("???", SwingConstants.RIGHT);
 		//wynik.setHorizontalAlignment(RIGHT);
 		przycisk0 = new JButton("0");
+		//przycisk0.setBackground(new Color(200,100,100));
 		przycisk1 = new JButton("1");
 		przycisk2 = new JButton("2");
 		przycisk3 = new JButton("3");
